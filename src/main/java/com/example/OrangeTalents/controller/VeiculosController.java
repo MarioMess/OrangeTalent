@@ -1,8 +1,7 @@
 package com.example.OrangeTalents.controller;
 
-import com.example.OrangeTalents.cadastro.Usuario;
+
 import com.example.OrangeTalents.cadastro.Veiculos;
-import com.example.OrangeTalents.repository.CadastroUsuarioRepository;
 import com.example.OrangeTalents.repository.CadastroVeiculoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,24 +11,25 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.validation.Valid;
+
 @RestController
-@RequestMapping("/controleveiculos")
-public class CadastroController {
+@RequestMapping("/veiculos")
+public class VeiculosController {
 
-    @Autowired
-    private CadastroUsuarioRepository usuarioRepository;
-
+    @PersistenceContext
+    EntityManager manager;
     @Autowired
     private CadastroVeiculoRepository veiculoRepository;
 
-    @PostMapping(value = "/usuario")
-    public ResponseEntity <Usuario> cadastro(@RequestBody Usuario usuario){
-        usuarioRepository.save(usuario);
-        return ResponseEntity.status(HttpStatus.CREATED).body(usuario);
-    }
 
     @PostMapping(value = "/veiculos")
-    public ResponseEntity <Veiculos> cadastro(@RequestBody Veiculos veiculos){
+    public ResponseEntity<Veiculos> cadastro(@RequestBody @Valid Veiculos veiculos) {
+        if (veiculos == null) {
+            return ResponseEntity.badRequest().build();
+        }
         veiculoRepository.save(veiculos);
         return ResponseEntity.status(HttpStatus.CREATED).body(veiculos);
     }
