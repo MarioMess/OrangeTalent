@@ -24,9 +24,11 @@ public class Veiculos {
     @NotNull
     private Integer ano;
 
-    @OneToMany(mappedBy = "veiculos", cascade = CascadeType.ALL)
-    @JoinColumn(name = "veiculos_id")
-    private List<Usuario> usuario;
+    //@OneToMany(mappedBy = "veiculos", cascade = CascadeType.ALL)
+    //private List<Usuario> usuario;
+    
+    @ManyToOne
+    private Usuario usuario;
 
     public Veiculos(){}
 
@@ -36,9 +38,9 @@ public class Veiculos {
 
     public String getMarca() {
         return marca;
-    }
+    }   
 
-    public String getModelo() {
+	public String getModelo() {
         return modelo;
     }
 
@@ -46,7 +48,31 @@ public class Veiculos {
         return ano;
     }
 
-    public List<Usuario> getUsuario() {
-        return usuario;
-    }
-}
+	public void setVeiculo(String veiculo) {
+		this.veiculo = veiculo;
+	}
+
+	public void setMarca(String marca) {
+		this.marca = marca;
+	}
+
+	public void setModelo(String modelo) {
+		this.modelo = modelo;
+	}
+
+	public void setAno(Integer ano) {
+		this.ano = ano;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+    
+  
+    
+ }
+

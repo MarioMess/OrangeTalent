@@ -2,11 +2,16 @@ package com.example.OrangeTalents.cadastro;
 
 import org.hibernate.validator.constraints.br.CPF;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -32,8 +37,12 @@ public class Usuario {
 	@NotNull
 	private Date dataNascimento;
 
-	@ManyToOne
-	private Veiculos veiculos;
+	//@ManyToOne
+	//private Veiculos veiculos;
+	
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("usuario")	
+	private List<Veiculos> idveiculo;
 
 	public Usuario(){}
 
@@ -53,6 +62,33 @@ public class Usuario {
 		return dataNascimento;
 	}
 
-	public Veiculos getVeiculos() {
-		return veiculos;}
+	
+	public List<Veiculos> getIdveiculo() {
+		return idveiculo;
+	}
+
+	public void setIdveiculo(List<Veiculos> idveiculo) {
+		this.idveiculo = idveiculo;
+	}
+
+	
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+	
+	
+
+	
 }
