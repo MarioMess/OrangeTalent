@@ -3,17 +3,13 @@ package com.example.OrangeTalents.cadastro;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
-@Entity
+@Entity(name = "veiculos")
 public class Veiculos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @NotBlank
-    private String veiculo;
 
     @NotBlank
     private String marca;
@@ -32,10 +28,6 @@ public class Veiculos {
 
     public Veiculos(){}
 
-    public String getVeiculo() {
-        return veiculo;
-    }
-
     public String getMarca() {
         return marca;
     }   
@@ -48,9 +40,6 @@ public class Veiculos {
         return ano;
     }
 
-	public void setVeiculo(String veiculo) {
-		this.veiculo = veiculo;
-	}
 
 	public void setMarca(String marca) {
 		this.marca = marca;
@@ -70,9 +59,6 @@ public class Veiculos {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-    
-  
+	}   
     
  }
-

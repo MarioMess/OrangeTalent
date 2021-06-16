@@ -1,6 +1,5 @@
 package com.example.OrangeTalents.controller;
 
-
 import com.example.OrangeTalents.cadastro.Veiculos;
 import com.example.OrangeTalents.repository.CadastroVeiculoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
