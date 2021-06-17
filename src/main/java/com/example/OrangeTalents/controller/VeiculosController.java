@@ -22,7 +22,7 @@ import javax.persistence.PersistenceContext;
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*" )
 @RequestMapping("/veiculos")
-public class VeiculosController {
+public class VeiculosController<ano> {
 
     @PersistenceContext
     EntityManager manager;
@@ -37,10 +37,9 @@ public class VeiculosController {
     
     @GetMapping("/{id}")
 	public ResponseEntity<Veiculos> buscarveiculos(@PathVariable long id) {
-		return veiculoRepository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
+		return veiculoRepository.findById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
 	}
-    
-    
+
     @PostMapping
     public ResponseEntity<Veiculos> cadastroveiculos(@RequestBody Veiculos veiculos) {
         if (veiculos == null) {

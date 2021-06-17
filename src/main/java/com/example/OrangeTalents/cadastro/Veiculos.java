@@ -3,6 +3,7 @@ package com.example.OrangeTalents.cadastro;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 
 @Entity(name = "veiculos")
 public class Veiculos {
@@ -20,8 +21,7 @@ public class Veiculos {
     @NotNull
     private Integer ano;
 
-    //@OneToMany(mappedBy = "veiculos", cascade = CascadeType.ALL)
-    //private List<Usuario> usuario;
+    private LocalDateTime hoje = LocalDateTime.now();
     
     @ManyToOne
     private Usuario usuario;
@@ -59,6 +59,9 @@ public class Veiculos {
 
 	public void setId(Long id) {
 		this.id = id;
-	}   
-    
- }
+	}
+
+    public LocalDateTime getHoje() {
+        return hoje;
+    }
+}
