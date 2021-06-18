@@ -1,6 +1,6 @@
 package com.example.OrangeTalents.controller;
 
-import com.example.OrangeTalents.cadastro.Usuario;
+import com.example.OrangeTalents.model.CadastroUsuario;
 
 import com.example.OrangeTalents.repository.CadastroUsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,16 +24,16 @@ public class UsuarioController {
     private CadastroUsuarioRepository usuarioRepository;
 
     @GetMapping(value = "/usuario")
-    public ResponseEntity<List<Usuario>> GetAll() {
+    public ResponseEntity<List<CadastroUsuario>> GetAll() {
         return ResponseEntity.ok(usuarioRepository.findAll());
     }
 
     @GetMapping("/{id}")
-  	public ResponseEntity<Usuario> buscarusuarios(@PathVariable long id) {
+  	public ResponseEntity<CadastroUsuario> buscarusuarios(@PathVariable long id) {
   		return usuarioRepository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
   	}
      @PostMapping
-     public ResponseEntity<Usuario> cadastrousuarios(@RequestBody Usuario usuario){
+     public ResponseEntity<CadastroUsuario> cadastrousuarios(@RequestBody CadastroUsuario usuario){
     	 if (usuario == null){
     		 return ResponseEntity.badRequest().build();
          }

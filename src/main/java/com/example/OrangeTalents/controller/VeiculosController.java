@@ -1,6 +1,6 @@
 package com.example.OrangeTalents.controller;
 
-import com.example.OrangeTalents.cadastro.Veiculos;
+import com.example.OrangeTalents.model.CadastroVeiculos;
 import com.example.OrangeTalents.repository.CadastroVeiculoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,17 +31,17 @@ public class VeiculosController<ano> {
     private CadastroVeiculoRepository veiculoRepository;
 
     @GetMapping(value = "/veiculo")
-    public ResponseEntity<List<Veiculos>> GetAll() {
+    public ResponseEntity<List<CadastroVeiculos>> GetAll() {
         return ResponseEntity.ok(veiculoRepository.findAll());
     }
     
     @GetMapping("/{id}")
-	public ResponseEntity<Veiculos> buscarveiculos(@PathVariable long id) {
+	public ResponseEntity<CadastroVeiculos> buscarveiculos(@PathVariable long id) {
 		return veiculoRepository.findById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
 	}
 
     @PostMapping
-    public ResponseEntity<Veiculos> cadastroveiculos(@RequestBody Veiculos veiculos) {
+    public ResponseEntity<CadastroVeiculos> cadastroveiculos(@RequestBody CadastroVeiculos veiculos) {
         if (veiculos == null) {
             return ResponseEntity.badRequest().build();
         }

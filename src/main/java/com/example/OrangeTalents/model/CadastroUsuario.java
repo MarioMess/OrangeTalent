@@ -1,4 +1,4 @@
-package com.example.OrangeTalents.cadastro;
+package com.example.OrangeTalents.model;
 
 import org.hibernate.validator.constraints.br.CPF;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -11,7 +11,7 @@ import java.util.List;
 
 
 @Entity
-public class Usuario {
+public class CadastroUsuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,10 +35,9 @@ public class Usuario {
 
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
 	@Column(name = "id")
-	@JsonIgnoreProperties("usuario")	
-	private List<Veiculos> idveiculo;
+	private List<CadastroVeiculos> idveiculo;
 
-	public Usuario(){}
+	public CadastroUsuario(){}
 
 	public String getNome() {
 		return nome;
@@ -56,11 +55,11 @@ public class Usuario {
 		return dataNascimento;
 	}
 	
-	public List<Veiculos> getIdveiculo() {
+	public List<CadastroVeiculos> getIdveiculo() {
 		return idveiculo;
 	}
 
-	public void setIdveiculo(List<Veiculos> idveiculo) {
+	public void setIdveiculo(List<CadastroVeiculos> idveiculo) {
 		this.idveiculo = idveiculo;
 	}
 	

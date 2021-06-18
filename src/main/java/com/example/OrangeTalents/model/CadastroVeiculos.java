@@ -1,4 +1,4 @@
-package com.example.OrangeTalents.cadastro;
+package com.example.OrangeTalents.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -6,7 +6,7 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Entity(name = "veiculos")
-public class Veiculos {
+public class CadastroVeiculos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,9 +24,9 @@ public class Veiculos {
     private LocalDateTime hoje = LocalDateTime.now();
     
     @ManyToOne
-    private Usuario usuario;
+    private CadastroUsuario usuario;
 
-    public Veiculos(){}
+    public CadastroVeiculos(){}
 
     public String getMarca() {
         return marca;
