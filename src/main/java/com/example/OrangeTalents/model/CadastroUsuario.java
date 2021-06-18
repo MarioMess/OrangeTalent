@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
 
-@Entity
+@Entity(name = "usuario")
 public class CadastroUsuario {
 
 	@Id
