@@ -1,14 +1,12 @@
 package com.example.OrangeTalents.model;
 
 import org.hibernate.validator.constraints.br.CPF;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
-
 
 @Entity
 public class CadastroUsuario {
@@ -40,38 +38,47 @@ public class CadastroUsuario {
 	public CadastroUsuario(){}
 
 	public String getNome() {
+
 		return nome;
 	}
 
 	public String getEmail() {
+
 		return email;
 	}
 
 	public String getCpf() {
+
 		return cpf;
 	}
 
 	public Date getDataNascimento() {
+
 		return dataNascimento;
 	}
 	
 	public List<CadastroVeiculos> getIdveiculo() {
+
 		return idveiculo;
 	}
 
 	public void setIdveiculo(List<CadastroVeiculos> idveiculo) {
+
 		this.idveiculo = idveiculo;
 	}
 	
 	public void setNome(String nome) {
+
 		this.nome = nome;
 	}
 
 	public void setEmail(String email) {
+
 		this.email = email;
 	}
 
 	public void setCpf(String cpf) {
+
 		this.cpf = cpf;
 	}
 
