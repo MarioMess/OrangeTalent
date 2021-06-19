@@ -16,9 +16,6 @@ import java.util.List;
 @CrossOrigin(origins = "*", allowedHeaders = "*" )
 @RequestMapping("/usuarios")
 public class UsuarioController {
-
-    @PersistenceContext
-    EntityManager manager;
     
     @Autowired
     private CadastroUsuarioRepository usuarioRepository;
